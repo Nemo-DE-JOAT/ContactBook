@@ -11,7 +11,15 @@
         
         <script src="config.js"></script>
         <script>
-    
+            function fetchContacts(){
+                fetch(rootPath + "conroller/get-contacts/")
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(data){
+                   displayOutput(data);
+                })
+            }
         </script>
     </body>
 </html>
