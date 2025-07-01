@@ -11,6 +11,9 @@
         
         <script src="config.js"></script>
         <script>
+            
+            document.getElementById("refresh").addEventListener('click', fetchContacts);
+            
             function fetchContacts(){
                 fetch(rootPath + "conroller/get-contacts/")
                 .then(function(response){
