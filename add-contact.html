@@ -31,12 +31,27 @@
         <script src="config.js"> </script>
         <script>
                 Function submitForm(e){
-               e.preventDefault();
+                   e.preventDefault();
                 
                 const form = new FormData(document.querySelector('#editForm'));
                 form.append('apikey',apikey);
-                
-                
+
+                fetch(rootPath + 'controller/insert-contact',{
+                    method:'POST',
+                    headers: {'Accept': 'application/json, *.*'},
+                    body: form
+                })
+                .then(function(respose){
+                    return respose.text();
+                })
+                .then(function(data){
+                    if(data == "1"){
+                        alert("Contact added.");
+                        //link to home page
+                    }else{
+                        alert(data);
+                    }
+                })
             }
         </script>    
     </body>
