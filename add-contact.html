@@ -30,7 +30,14 @@
 
         <script src="config.js"> </script>
         <script>
-        
+                Function submitForm(e){
+               e.preventDefault();
+                
+                const form = new FormData(document.querySelector('#editForm'));
+                form.append('apikey',apikey);
+                
+                
+            }
         </script>    
     </body>
 </html>
