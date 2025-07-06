@@ -30,6 +30,10 @@
 
         <script src="config.js"> </script>
         <script>
+            //event listners for the buttons
+            document.getElementById("submitForm").addEventListener('click', submitForm);
+            document.getElementById("homelink").addEventListener('click', homeLink);
+            
                 Function submitForm(e){
                    e.preventDefault();
                 
@@ -48,10 +52,16 @@
                     if(data == "1"){
                         alert("Contact added.");
                         //link to home page
+                        homeLink();
                     }else{
                         alert(data);
+                        //link to home page
+                        homeLink();
                     }
                 })
+            }
+            function homeLink(){
+                window.open("index.html", "_self");
             }
         </script>    
     </body>
