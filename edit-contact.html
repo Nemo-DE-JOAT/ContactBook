@@ -32,35 +32,19 @@
 
         <script src="config.js"> </script>
         <script>
-            //event listners for the buttons
-            document.getElementById("submitForm").addEventListener('click', submitForm);
-            document.getElementById("homeLink").addEventListener('click', homeLink);
+
+           document.getElementById("homeLink").addEventListener('click', homeLink);
+           //document.getElementById("homeLink").addEventListener('click', homeLink);
+           //document.getElementById("homeLink").addEventListener('click', homeLink);
             
-            Function submitForm(e){
-               e.preventDefault();
-                
-                const form = new FormData(document.querySelector('#editForm'));
-                form.append('apikey',apikey);
-                
-                fetch(rootPath + 'controller/insert-contact',{
-                    method:'POST',
-                    headers: {'Accept': 'application/json, *.*'},
-                    body: form
-                })
-                .then(function(respose){
-                    return respose.text();
-                })
-                .then(function(data){
-                    if(data == "1"){
-                        alert("Contact added.");
-                        //link to home page
-                        homeLink();
-                    }else{
-                        alert(data);
-                        //link to home page
-                        homeLink();
-                    }
-                })
+           var id = getId();
+            console.log("The id is :" + id);
+            
+            function getId(){
+                var url = window.location.href;
+                var pos = url.search("=");
+                var id = url.slice(pos + 1);
+                return id;
             }
             
             function homeLink(){
