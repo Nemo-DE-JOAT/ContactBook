@@ -4,7 +4,7 @@
         <meta charset="UTF-8" />
         <title></title>
     </head>
-    <body>
+    <body onload="getContact()">
         <br/>
         <form id="editForm" >
             <label for="firstname">First Name: </label>
@@ -45,6 +45,18 @@
                 var pos = url.search("=");
                 var id = url.slice(pos + 1);
                 return id;
+            }
+
+             function getContact(){
+                fetch(rootPath + 'conroller/get-contacts/?id=' +id)
+                .then(function(response){
+                    return response.json();
+                })
+                .then(function(data){
+                    // used to display on the console log under inspect or and console
+                    //console.log(data);
+                    displayOutput(data);
+                })
             }
             
             function homeLink(){
