@@ -3,6 +3,7 @@
     <head>
         <meta charset="UTF-8" />
         <title>Title</title>
+        
     </head>
     <body onload="fetchContacts()">
         <div id="table">Contact loading...</div>
@@ -13,6 +14,7 @@
         <script>
             
             document.getElementById("refresh").addEventListener('click', fetchContacts);
+            document.getElementById("addButton").addEventListener('click', addContact);
             
             function fetchContacts(){
                 fetch(rootPath + "conroller/get-contacts/")
@@ -20,14 +22,16 @@
                     return response.json();
                 })
                 .then(function(data){
-                   displayOutput(data);
+                    // used to display on the console log under inspect or and console
+                    //console.log(data);
+                    displayOutput(data);
                 })
             }
-             function displayOutput(data){
+            function displayOutput(data){
                 var output= "<table>";
                 
                 for(a in data){
-                    output += '
+                    output +='
                         <tr onclick="editContact(${data[a].id})">
                             <td><img src="${rootPath}controller/uploads/${data[a].avatar}" "width = 48"/><td>
                             <td><h5>${data[a].firstname}</h5></td>
@@ -47,3 +51,9 @@
         </script>
     </body>
 </html>
+
+
+
+        
+        
+        
